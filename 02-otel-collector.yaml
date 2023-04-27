@@ -19,7 +19,7 @@ spec:
               scrape_interval: 10s
               static_configs:
                 - targets: [ '0.0.0.0:8888' ]
-    
+
     processors:
       batch:
       memory_limiter:
@@ -27,11 +27,11 @@ spec:
         limit_percentage: 50
         spike_limit_percentage: 30
       attributes:
-      actions:
-      - key: "http.target"
-        pattern: ^.*\?player=(?P<player>.*)
-        action: extract
-    
+        actions:
+        - key: "http.target"
+          pattern: ^.*\?player=(?P<player>.*)
+          action: extract
+
     exporters:
       otlp:
         endpoint: "http://tempo.observability-backend.svc.cluster.local:55680"
